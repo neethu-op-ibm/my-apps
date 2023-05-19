@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { AuthorizedUserModule } from './modules/authorized-user/authorized-user.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserAuthenticationModule } from './modules/user-authentication/user-authentication.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatSidenavModule,
     AuthorizedUserModule,
-    SharedModule
+    SharedModule,
+    UserAuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

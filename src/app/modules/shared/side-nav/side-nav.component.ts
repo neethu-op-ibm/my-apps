@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent {
+  @Output() closeSideNav = new EventEmitter();
 
+  constructor(private router: Router) { }
+
+  onToggleClose(url:string) {
+    this.router.navigateByUrl(url);    
+    this.closeSideNav.emit();
+  }
+
+  ngOnInit() {
+  }
 }
