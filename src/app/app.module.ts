@@ -8,6 +8,8 @@ import { AuthorizedUserModule } from './modules/authorized-user/authorized-user.
 import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserAuthenticationModule } from './modules/user-authentication/user-authentication.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthenicationService } from './services/authenication.service';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,15 @@ import { UserAuthenticationModule } from './modules/user-authentication/user-aut
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatSidenavModule,
     AuthorizedUserModule,
     SharedModule,
     UserAuthenticationModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthenicationService
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

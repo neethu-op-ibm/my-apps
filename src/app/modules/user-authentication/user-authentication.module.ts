@@ -4,6 +4,9 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UserAuthenticationRountigModule } from './user-authentication-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthenicationService } from 'src/app/services/authenication.service';
 
 @NgModule({
   declarations: [
@@ -12,6 +15,8 @@ import { UserAuthenticationRountigModule } from './user-authentication-routing.m
     ForgotPasswordComponent
   ],
   imports: [
+    HttpClientModule,
+    ReactiveFormsModule,
     CommonModule,
     UserAuthenticationRountigModule,
   ],
@@ -19,6 +24,6 @@ import { UserAuthenticationRountigModule } from './user-authentication-routing.m
     LoginComponent,
     RegistrationComponent,
     ForgotPasswordComponent
-  ],
+  ]
 })
 export class UserAuthenticationModule { }
