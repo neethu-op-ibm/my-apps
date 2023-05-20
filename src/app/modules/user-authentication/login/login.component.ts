@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 import { AuthenicationService } from 'src/app/services/authenication.service';
 
 @Component({
@@ -44,15 +43,15 @@ export class LoginComponent {
     }
     this.loading = true;
     this.authenticationService.login(this.formControls['username'].value,
-      this.formControls['password'].value)
-      .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          console.log(error);
-          this.error = error;
-          this.loading = false;
-        });
+      this.formControls['password'].value).subscribe((response: any) => {
+        console.log(response);
+        if (response.status === 200) {
+
+          this.router.navigateByUrl('/authorized-user/home');
+        } else {
+          this.error = '* You entered a wrong credential. Please use test for both username and password.'
+        }
+
+      })
   }
 }

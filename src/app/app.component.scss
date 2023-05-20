@@ -13,5 +13,8 @@ mat-sidenav {
     background-color: #f4f4f4;
 }
 .main-section{
-    margin: 50px
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

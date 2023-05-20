@@ -21,13 +21,14 @@ import { AuthenicationService } from './services/authenication.service';
     BrowserAnimationsModule,
     HttpClientModule,
     MatSidenavModule,
-    AuthorizedUserModule,
     SharedModule,
-    UserAuthenticationModule
+    UserAuthenticationModule,
+    AuthorizedUserModule,
   ],
   providers: [
     AuthenicationService
   ],
   bootstrap: [AppComponent],
+  exports: [AuthorizedUserModule]
 })
 export class AppModule { }

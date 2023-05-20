@@ -24,6 +24,9 @@ import { AuthenicationService } from 'src/app/services/authenication.service';
     LoginComponent,
     RegistrationComponent,
     ForgotPasswordComponent
-  ]
+  ],  
+  providers: [
+    AuthenicationService
+  ],
 })
 export class UserAuthenticationModule { }

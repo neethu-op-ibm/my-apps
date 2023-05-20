@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, Observable } from "rxjs";
-import { map } from "rxjs/operators";
 import { User } from "../models/user";
+import { BehaviorSubject, Observable, of } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -24,17 +23,14 @@ export class AuthenicationService {
   }
 
   login(username: string, password: string) {
-    return this.http
-      .post<any>(`/user/authenticate`, { username, password })
-      .pipe(
-        map(user => {
-          console.log(user);          
-          localStorage.setItem("currentUser", JSON.stringify(user));
-          this.currentUserSubject.next(user);
-          return user;
-        })
-      );
-      
+    // mocked api response
+    let response = {};
+    if (username === 'test' && password === 'test') {
+      response = { status: 200 };
+    } else {
+      response = { status: 401 };
+    }
+    return of(response)
   }
 
   logout() {
