@@ -21,9 +21,6 @@ export class LoginComponent {
     private router: Router,
     private authenticationService: AuthenicationService
   ) {
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
-    }
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -31,7 +28,6 @@ export class LoginComponent {
   }
 
   ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   get formControls() { return this.loginForm.controls; }

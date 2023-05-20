@@ -11,7 +11,7 @@ export class AuthenicationService {
   public currentUser: Observable<User>;
 
   constructor(private http: HttpClient) {
-    const currentUser = localStorage.getItem("currentUser") as string;
+    const currentUser = sessionStorage.getItem("currentUser") as string;
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(currentUser)
     );
@@ -23,7 +23,6 @@ export class AuthenicationService {
   }
 
   login(username: string, password: string) {
-    // mocked api response
     let response = {};
     if (username === 'test' && password === 'test') {
       response = { status: 200 };
@@ -34,7 +33,15 @@ export class AuthenicationService {
   }
 
   logout() {
-    localStorage.removeItem("currentUser");
+    sessionStorage.removeItem("currentUser");
     this.currentUserSubject.next({});
+  }
+
+  getAuthStatus() {
+    if (this.currentUserValue.id) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
