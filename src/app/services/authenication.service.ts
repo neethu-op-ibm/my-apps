@@ -26,6 +26,15 @@ export class AuthenicationService {
     let response = {};
     if (username === 'test' && password === 'test') {
       response = { status: 200 };
+      const user = {
+        id: 1,
+        username: 'test',
+        password: 'test',
+        firstName: 'test',
+        lastName: 'test'
+      }
+      sessionStorage.setItem('currentUser', JSON.stringify(user));
+
     } else {
       response = { status: 401 };
     }
