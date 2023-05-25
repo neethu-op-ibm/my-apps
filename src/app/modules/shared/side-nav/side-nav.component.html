@@ -1,5 +1,5 @@
 <mat-nav-list class="sidenav-list">
-    <ng-container *ngIf="!currentUser">
+    <ng-container *ngIf="!currentUser && currentUser === null">
         <a mat-list-item (click)="onToggleClose('/authentication/login')">
             <mat-icon>input</mat-icon>
             <span>Login</span>
@@ -13,7 +13,7 @@
             <span>Forgot password</span>
         </a>
     </ng-container>
-    <ng-container *ngIf="currentUser">
+    <ng-container *ngIf="currentUser && currentUser !== null">
         <a mat-list-item (click)="logout()">
             <mat-icon>logout</mat-icon>
             <span>Logout</span>

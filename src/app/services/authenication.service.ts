@@ -45,6 +45,10 @@ export class AuthenicationService {
   }
 
   getAuthStatus() {
+    const currentUser = sessionStorage.getItem("currentUser") as string;
+    this.currentUserSubject = new BehaviorSubject<User>(
+      JSON.parse(currentUser)
+    );
     if (this.currentUserSubject.value && this.currentUserSubject.value.id) {
       return true;
     } else {
