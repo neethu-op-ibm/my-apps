@@ -7,23 +7,21 @@ import { BehaviorSubject, Observable, of } from "rxjs";
   providedIn: 'root'
 })
 export class AuthenicationService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  currentUserSubject: BehaviorSubject<any>;
 
   constructor(private http: HttpClient) {
     const currentUser = sessionStorage.getItem("currentUser") as string;
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(currentUser)
     );
-    this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
+  get currentUserSub(): BehaviorSubject<User> {
+    return this.currentUserSubject;
   }
 
   login(username: string, password: string) {
-    let response = {};
+    let response;
     if (username === 'test' && password === 'test') {
       response = { status: 200 };
       const user = {
@@ -33,8 +31,8 @@ export class AuthenicationService {
         firstName: 'test',
         lastName: 'test'
       }
+      this.currentUserSubject.next(user);
       sessionStorage.setItem('currentUser', JSON.stringify(user));
-
     } else {
       response = { status: 401 };
     }
@@ -43,11 +41,11 @@ export class AuthenicationService {
 
   logout() {
     sessionStorage.removeItem("currentUser");
-    this.currentUserSubject.next({});
+    this.currentUserSubject.next(undefined);
   }
 
   getAuthStatus() {
-    if (this.currentUserValue.id) {
+    if (this.currentUserSubject.value && this.currentUserSubject.value.id) {
       return true;
     } else {
       return false;

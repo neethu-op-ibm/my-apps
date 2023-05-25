@@ -40,9 +40,8 @@ export class LoginComponent {
     this.loading = true;
     this.authenticationService.login(this.formControls['username'].value,
       this.formControls['password'].value).subscribe((response: any) => {
-        console.log(response);
         if (response.status === 200) {
-
+          console.log(response);    
           this.router.navigateByUrl('/authorized-user/home');
         } else {
           this.error = '* You entered a wrong credential. Please use test for both username and password.'

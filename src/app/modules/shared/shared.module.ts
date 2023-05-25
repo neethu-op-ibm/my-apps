@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AuthenicationService } from 'src/app/services/authenication.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     HeaderComponent,
     FooterComponent,
     SideNavComponent
+  ],
+  providers: [
+    AuthenicationService
   ]
 })
 export class SharedModule { }
