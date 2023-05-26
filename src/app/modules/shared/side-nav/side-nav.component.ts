@@ -23,9 +23,8 @@ export class SideNavComponent {
   }
 
   ngOnInit() {
-    this.authenticationService.currentUserSub.subscribe((user: User) => {
+    this.authenticationService.currentUserSubject.subscribe((user: User) => {
       this.currentUser = user;
-      console.log(this.currentUser);
     });
   }
 

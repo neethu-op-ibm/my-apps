@@ -27,4 +27,10 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create', () => {
+    spyOn(component.SideNavToggle, 'emit');
+    component.openSidenav();
+    expect(component.SideNavToggle.emit).toHaveBeenCalled();
+  });
 });

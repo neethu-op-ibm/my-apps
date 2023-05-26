@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 import { User } from "../models/user";
-import { BehaviorSubject, Observable, of } from "rxjs";
+import { BehaviorSubject, of } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +8,11 @@ import { BehaviorSubject, Observable, of } from "rxjs";
 export class AuthenicationService {
   currentUserSubject: BehaviorSubject<any>;
 
-  constructor(private http: HttpClient) {
+  constructor() {
     const currentUser = sessionStorage.getItem("currentUser") as string;
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(currentUser)
     );
-  }
-
-  get currentUserSub(): BehaviorSubject<User> {
-    return this.currentUserSubject;
   }
 
   login(username: string, password: string) {

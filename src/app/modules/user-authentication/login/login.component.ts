@@ -32,7 +32,7 @@ export class LoginComponent {
 
   get formControls() { return this.loginForm.controls; }
 
-  onSubmit() {
+  login() {
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
@@ -41,7 +41,6 @@ export class LoginComponent {
     this.authenticationService.login(this.formControls['username'].value,
       this.formControls['password'].value).subscribe((response: any) => {
         if (response.status === 200) {
-          console.log(response);    
           this.router.navigateByUrl('/authorized-user/home');
         } else {
           this.error = '* You entered a wrong credential. Please use test for both username and password.'
