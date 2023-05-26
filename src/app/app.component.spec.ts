@@ -1,11 +1,31 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SideNavComponent } from './modules/shared/side-nav/side-nav.component';
+import { HeaderComponent } from './modules/shared/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
+    imports: [
+      RouterTestingModule,
+      MatSidenavModule,
+      MatListModule,
+      MatIconModule,
+      MatToolbarModule,
+      BrowserAnimationsModule,
+      HttpClientModule
+    ],
+    declarations: [
+      AppComponent,
+      SideNavComponent,
+      HeaderComponent
+    ]
   }));
 
   it('should create the app', () => {
@@ -20,10 +40,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('story-app');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('story-app app is running!');
-  });
 });
