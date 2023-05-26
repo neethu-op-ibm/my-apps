@@ -1,5 +1,14 @@
 <div class="main-wrapper">
-    <div class="title">My Stories</div>
-    <div class="story-single" ></div>
+    <div class="title">Stories</div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+            <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+            <td mat-cell *matCellDef="let story">{{ story[column] }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let storyRow; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
 </div>
-hjghjgjgjh
